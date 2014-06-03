@@ -8,6 +8,12 @@ import se.fidde.zombiebird.helpers.AssetLoader;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * Holds a reference to all the actors on the screen
+ * 
+ * @author fidde
+ *
+ */
 public class GameWorld {
 
     private Bird bird;
@@ -17,6 +23,12 @@ public class GameWorld {
     private int score;
     private GameState state;
 
+    /**
+     * Default Constructor
+     * 
+     * @param midPointY
+     *            midpoint on the y axel
+     */
     public GameWorld(int midPointY) {
         this.midPointY = midPointY;
         state = GameState.READY;
@@ -25,6 +37,12 @@ public class GameWorld {
         ground = new Rectangle(0, midPointY + 66, 136, 11);
     }
 
+    /**
+     * Updates the actors of the game
+     * 
+     * @param delta
+     *            delta between each frame
+     */
     public void update(float delta) {
         switch (state) {
 

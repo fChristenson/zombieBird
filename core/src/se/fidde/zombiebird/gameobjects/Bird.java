@@ -5,6 +5,12 @@ import se.fidde.zombiebird.helpers.AssetLoader;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Bird class
+ * 
+ * @author fidde
+ *
+ */
 public class Bird {
 
     private Vector2 position;
@@ -28,7 +34,13 @@ public class Bird {
         isAlive = true;
     }
 
+    /**
+     * Updates the birds state
+     * 
+     * @param delta
+     */
     public void update(float delta) {
+        // add acceleration on the y axel
         velocity.add(acceleration.cpy().scl(delta));
         if (velocity.y > 200) {
             velocity.y = 200;
@@ -68,6 +80,9 @@ public class Bird {
         return velocity.y > 110;
     }
 
+    /**
+     * Plays a flap sound and adds velocity on the y axel
+     */
     public void onClick() {
         if (isAlive) {
             AssetLoader.flap.play();
@@ -95,6 +110,11 @@ public class Bird {
         return height;
     }
 
+    /**
+     * Gets the birds collision circle.
+     * 
+     * @return {@link Circle}
+     */
     public Circle getBoundingCircle() {
         return boundingCircle;
     }
@@ -103,15 +123,27 @@ public class Bird {
         return isAlive;
     }
 
+    /**
+     * Sets velocity.y to 0 and sets alive state to false.
+     */
     public void die() {
         velocity.y = 0;
         isAlive = false;
     }
 
+    /**
+     * Sets acceleration.y to 0
+     */
     public void decelerate() {
         acceleration.y = 0;
     }
 
+    /**
+     * Resets all properties to their starting values
+     * 
+     * @param yPos
+     *            the birds y position
+     */
     public void restart(int yPos) {
         rotation = 0;
         velocity.y = 0;

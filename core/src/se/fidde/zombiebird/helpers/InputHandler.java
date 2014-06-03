@@ -5,6 +5,12 @@ import se.fidde.zombiebird.gameobjects.Bird;
 
 import com.badlogic.gdx.InputProcessor;
 
+/**
+ * Implementation of {@link InputProcessor}
+ * 
+ * @author fidde
+ *
+ */
 public class InputHandler implements InputProcessor {
 
     private GameWorld world;

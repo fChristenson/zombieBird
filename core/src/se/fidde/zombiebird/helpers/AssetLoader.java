@@ -9,6 +9,12 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * Loads all assets used
+ * 
+ * @author fidde
+ *
+ */
 public class AssetLoader {
 
     private static final String HIGHSCORE = "highscore";
@@ -36,6 +42,9 @@ public class AssetLoader {
         prefs.flush();
     }
 
+    /**
+     * Loads assets
+     */
     public static void load() {
         prefs = Gdx.app.getPreferences(HIGHSCORE);
         if (!prefs.contains(HIGHSCORE)) {
@@ -82,6 +91,9 @@ public class AssetLoader {
         shadow.setScale(0.25f, -0.25f);
     }
 
+    /**
+     * Disposes of assets
+     */
     public static void dispose() {
         texture.dispose();
 

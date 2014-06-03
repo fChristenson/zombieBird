@@ -7,6 +7,12 @@ import java.util.Random;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 
+/**
+ * Class holding data for pipe actor
+ * 
+ * @author fidde
+ *
+ */
 public class Pipe extends Scrollable {
 
     public static final int VERTICAL_GAP = 45;
@@ -61,6 +67,12 @@ public class Pipe extends Scrollable {
         isScored = false;
     }
 
+    /**
+     * Checks for collisions
+     * 
+     * @param bird
+     * @return true if a collision is found
+     */
     public boolean collides(Bird bird) {
         if (position.x < bird.getX() + bird.getWidth()) {
             Circle circle = bird.getBoundingCircle();

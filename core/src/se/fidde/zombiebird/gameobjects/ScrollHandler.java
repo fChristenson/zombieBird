@@ -3,6 +3,12 @@ package se.fidde.zombiebird.gameobjects;
 import static se.fidde.zombiebird.helpers.AssetLoader.coin;
 import se.fidde.zombiebird.GameWorld;
 
+/**
+ * ScrollHandler handles {@link Scrollable} actors
+ * 
+ * @author fidde
+ *
+ */
 public class ScrollHandler {
     public static final int SCROLL_SPEED = -59;
     public static final int PIPE_GAP = 49;
@@ -24,6 +30,12 @@ public class ScrollHandler {
                 yPos);
     }
 
+    /**
+     * Calls update on all {@link Scrollable} actors
+     * 
+     * @param delta
+     *            delta between frames
+     */
     public void update(float delta) {
         frontGrass.update(delta);
         backGrass.update(delta);
@@ -50,6 +62,9 @@ public class ScrollHandler {
         }
     }
 
+    /**
+     * Calls stop on all {@link Scrollable} actors
+     */
     public void stop() {
         frontGrass.stop();
         backGrass.stop();
@@ -58,6 +73,12 @@ public class ScrollHandler {
         pipe3.stop();
     }
 
+    /**
+     * Checks for collisions with {@link Bird}
+     * 
+     * @param bird
+     * @return true if a collision is found.
+     */
     public boolean collides(Bird bird) {
         if (!pipe1.isScored()
                 && pipe1.getX() + (pipe1.getWidth() / 2) < bird.getX()
@@ -66,6 +87,7 @@ public class ScrollHandler {
             world.addScore(1);
             pipe1.setScored(true);
             coin.play();
+
         } else if (!pipe2.isScored()
                 && pipe2.getX() + (pipe2.getWidth() / 2) < bird.getX()
                         + bird.getWidth()) {
@@ -81,7 +103,6 @@ public class ScrollHandler {
             world.addScore(1);
             pipe3.setScored(true);
             coin.play();
-
         }
 
         return pipe1.collides(bird) || pipe2.collides(bird)
@@ -108,6 +129,9 @@ public class ScrollHandler {
         return pipe3;
     }
 
+    /**
+     * Calls restart on all {@link Scrollable} actors
+     */
     public void restart() {
         frontGrass.restart(0, SCROLL_SPEED);
         backGrass.restart(frontGrass.getTailX(), SCROLL_SPEED);

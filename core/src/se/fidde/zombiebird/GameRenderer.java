@@ -16,6 +16,12 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+/**
+ * Class in charge of rendering sprites and assets
+ * 
+ * @author fidde
+ *
+ */
 public class GameRenderer {
 
     // Game objects
@@ -38,6 +44,16 @@ public class GameRenderer {
     private ShapeRenderer shapeRenderer;
     private SpriteBatch batch;
 
+    /**
+     * Default Constructor
+     * 
+     * @param world
+     *            {@link GameWorld}
+     * @param gameHeight
+     *            height of the screen
+     * @param midPointY
+     *            midpoint on the y axel
+     */
     public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
         this.world = world;
         this.gameHeight = gameHeight;
@@ -86,19 +102,19 @@ public class GameRenderer {
     }
 
     private void drawSkulls() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
-
+        // draw skull set 1
         batch.draw(skullUp, pipe1.getX() - 1, pipe1.getY() + pipe1.getHeight()
                 - 14, 24, 14);
         batch.draw(skullDown, pipe1.getX() - 1,
                 pipe1.getY() + pipe1.getHeight() + 45, 24, 14);
 
+        // draw skullset 2
         batch.draw(skullUp, pipe2.getX() - 1, pipe2.getY() + pipe2.getHeight()
                 - 14, 24, 14);
         batch.draw(skullDown, pipe2.getX() - 1,
                 pipe2.getY() + pipe2.getHeight() + 45, 24, 14);
 
+        // draw skullset 3
         batch.draw(skullUp, pipe3.getX() - 1, pipe3.getY() + pipe3.getHeight()
                 - 14, 24, 14);
         batch.draw(skullDown, pipe3.getX() - 1,
@@ -106,18 +122,19 @@ public class GameRenderer {
     }
 
     private void drawPipes() {
-        // Temporary code! Sorry about the mess :)
-        // We will fix this when we finish the Pipe class.
+        // pipeset 1
         batch.draw(bar, pipe1.getX(), pipe1.getY(), pipe1.getWidth(),
                 pipe1.getHeight());
         batch.draw(bar, pipe1.getX(), pipe1.getY() + pipe1.getHeight() + 45,
                 pipe1.getWidth(), midPointY + 66 - (pipe1.getHeight() + 45));
 
+        // pipeset 2
         batch.draw(bar, pipe2.getX(), pipe2.getY(), pipe2.getWidth(),
                 pipe2.getHeight());
         batch.draw(bar, pipe2.getX(), pipe2.getY() + pipe2.getHeight() + 45,
                 pipe2.getWidth(), midPointY + 66 - (pipe2.getHeight() + 45));
 
+        // pipeset 3
         batch.draw(bar, pipe3.getX(), pipe3.getY(), pipe3.getWidth(),
                 pipe3.getHeight());
         batch.draw(bar, pipe3.getX(), pipe3.getY() + pipe3.getHeight() + 45,
@@ -152,6 +169,7 @@ public class GameRenderer {
         batch.enableBlending();
         drawSkulls();
 
+        // draw birdanimation
         if (bird.shouldNotFlap()) {
             batch.draw(birdMid, bird.getX(), bird.getY(),
                     bird.getWidth() / 2.0f, bird.getHeight() / 2.0f,
@@ -164,6 +182,7 @@ public class GameRenderer {
                     1, 1, bird.getRotation());
         }
 
+        // draw screen messages
         if (world.isReady()) {
             AssetLoader.shadow.draw(batch, "Tap screen", (136 / 2) - (42), 76);
             AssetLoader.font
@@ -185,6 +204,7 @@ public class GameRenderer {
                         - (3 * highscore.length() - 1), 127);
             }
 
+            // draw score
             String score = String.valueOf(world.getScore());
 
             AssetLoader.shadow.draw(batch, score,

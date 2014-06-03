@@ -2,6 +2,12 @@ package se.fidde.zombiebird.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * Superclass for environment actors
+ * 
+ * @author fidde
+ *
+ */
 public class Scrollable {
 
     protected Vector2 velocity;
@@ -17,6 +23,12 @@ public class Scrollable {
         this.height = height;
     }
 
+    /**
+     * Updates the environment actors position. Checks if actor is outside the
+     * left side of the screen.
+     * 
+     * @param delta
+     */
     public void update(float delta) {
         position.add(velocity.cpy().scl(delta));
         if (position.x + width < 0) {
@@ -24,6 +36,12 @@ public class Scrollable {
         }
     }
 
+    /**
+     * Resets the actors
+     * 
+     * @param newX
+     *            x position for actor
+     */
     public void reset(float newX) {
         position.x = newX;
         isScrolledLeft = false;
@@ -45,6 +63,11 @@ public class Scrollable {
         return position.y;
     }
 
+    /**
+     * Gets the actors x position + actors width
+     * 
+     * @return
+     */
     public float getTailX() {
         return position.x + width;
     }
@@ -53,10 +76,19 @@ public class Scrollable {
         return isScrolledLeft;
     }
 
+    /**
+     * Sets actors velocity to 0
+     */
     public void stop() {
         velocity.x = 0;
     }
 
+    /**
+     * Resets properties of the actor to their start values
+     * 
+     * @param xPos
+     * @param scrollSpeed
+     */
     public void restart(float xPos, float scrollSpeed) {
         position.x = xPos;
         velocity.x = scrollSpeed;

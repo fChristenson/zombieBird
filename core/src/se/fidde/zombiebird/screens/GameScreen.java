@@ -7,6 +7,12 @@ import se.fidde.zombiebird.helpers.InputHandler;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
+/**
+ * Implementation of {@link Screen}
+ * 
+ * @author fidde
+ *
+ */
 public class GameScreen implements Screen {
 
     private GameWorld world;
